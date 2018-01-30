@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DTS">
+          <Key>
+            <PropertyRef Name="DTSID" />
+          </Key>
+          <Property Name="DTSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DTSDate" Type="datetime" Nullable="false" />
+          <Property Name="DTSTasksID" Type="int" Nullable="false" />
+          <Property Name="DTSUserLoginID" Type="int" Nullable="false" />
+          <Property Name="DTSActivityID" Type="int" Nullable="false" />
+          <Property Name="DTSTimeFrom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DTSTimeTill" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DTSHours" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DTSStatus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectStartDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProjectEndDate" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QCs">
+          <Key>
+            <PropertyRef Name="QCID" />
+          </Key>
+          <Property Name="QCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QCDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QCBugs" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QCProjectID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QCUserLoginID" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="TasksID" />
+          </Key>
+          <Property Name="TasksID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TasksStartDate" Type="float" Nullable="false" />
+          <Property Name="TasksEndDate" Type="datetime" Nullable="false" />
+          <Property Name="TasksHours" Type="float" Nullable="false" />
+          <Property Name="TasksStatus" Type="tinyint" Nullable="false" />
+          <Property Name="TasksStartDateActual" Type="datetime" Nullable="false" />
+          <Property Name="TasksEndDateActual" Type="datetime" Nullable="false" />
+          <Property Name="TasksHoursActual" Type="float" Nullable="false" />
+          <Property Name="TasksHoursCoding" Type="float" Nullable="false" />
+          <Property Name="TasksHoursTesting" Type="float" Nullable="false" />
+          <Property Name="TasksHoursOthers" Type="float" Nullable="false" />
+          <Property Name="TasksSV" Type="float" Nullable="false" />
+          <Property Name="TasksEV" Type="float" Nullable="false" />
+          <Property Name="TasksIsMilestone" Type="tinyint" Nullable="false" />
+          <Property Name="TasksProjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="UserLoginID" />
+          </Key>
+          <Property Name="UserLoginID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Flag" Type="tinyint" Nullable="false" />
+          <Property Name="LastLoginTimeStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="DTS" EntityType="Self.DTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QCs" EntityType="Self.QCs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tasks" EntityType="Self.Tasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DBModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserLogins" EntityType="DBModel.UserLogin" />
+          <EntitySet Name="Projects" EntityType="DBModel.Project" />
+          <EntitySet Name="Tasks" EntityType="DBModel.Tasks" />
+          <EntitySet Name="DTS" EntityType="DBModel.DTS" />
+          <EntitySet Name="QCs" EntityType="DBModel.QC" />
+        </EntityContainer>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="UserLoginID" />
+          </Key>
+          <Property Name="UserLoginID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Flag" Type="Byte" Nullable="false" DefaultValue="0" />
+          <Property Name="LastLoginTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectCode" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ProjectStartDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ProjectEndDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          </EntityType>
+        <EntityType Name="Tasks">
+          <Key>
+            <PropertyRef Name="TasksID" />
+          </Key>
+          <Property Name="TasksID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TasksStartDate" Type="Double" Nullable="false" />
+          <Property Name="TasksEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TasksHours" Type="Double" Nullable="false" />
+          <Property Name="TasksStatus" Type="Byte" Nullable="false" />
+          <Property Name="TasksStartDateActual" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TasksEndDateActual" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TasksHoursActual" Type="Double" Nullable="false" />
+          <Property Name="TasksHoursCoding" Type="Double" Nullable="false" />
+          <Property Name="TasksHoursTesting" Type="Double" Nullable="false" />
+          <Property Name="TasksHoursOthers" Type="Double" Nullable="false" />
+          <Property Name="TasksSV" Type="Double" Nullable="false" />
+          <Property Name="TasksEV" Type="Double" Nullable="false" />
+          <Property Name="TasksIsMilestone" Type="Byte" Nullable="false" />
+          <Property Name="TasksProjectID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DTS">
+          <Key>
+            <PropertyRef Name="DTSID" />
+          </Key>
+          <Property Name="DTSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DTSDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DTSTasksID" Type="Int32" Nullable="false" />
+          <Property Name="DTSUserLoginID" Type="Int32" Nullable="false" />
+          <Property Name="DTSActivityID" Type="Int32" Nullable="false" />
+          <Property Name="DTSTimeFrom" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DTSTimeTill" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DTSHours" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DTSStatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="QC">
+          <Key>
+            <PropertyRef Name="QCID" />
+          </Key>
+          <Property Name="QCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QCDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="QCBugs" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="QCProjectID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="QCUserLoginID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBModelContainer">
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.UserLogin)">
+        <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="UserLoginID" ColumnName="UserLoginID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="LastLoginTimeStamp" ColumnName="LastLoginTimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectStartDate" ColumnName="ProjectStartDate" />
+          <ScalarProperty Name="ProjectEndDate" ColumnName="ProjectEndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.Tasks)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="TasksID" ColumnName="TasksID" />
+          <ScalarProperty Name="TasksStartDate" ColumnName="TasksStartDate" />
+          <ScalarProperty Name="TasksEndDate" ColumnName="TasksEndDate" />
+          <ScalarProperty Name="TasksHours" ColumnName="TasksHours" />
+          <ScalarProperty Name="TasksStatus" ColumnName="TasksStatus" />
+          <ScalarProperty Name="TasksStartDateActual" ColumnName="TasksStartDateActual" />
+          <ScalarProperty Name="TasksEndDateActual" ColumnName="TasksEndDateActual" />
+          <ScalarProperty Name="TasksHoursActual" ColumnName="TasksHoursActual" />
+          <ScalarProperty Name="TasksHoursCoding" ColumnName="TasksHoursCoding" />
+          <ScalarProperty Name="TasksHoursTesting" ColumnName="TasksHoursTesting" />
+          <ScalarProperty Name="TasksHoursOthers" ColumnName="TasksHoursOthers" />
+          <ScalarProperty Name="TasksSV" ColumnName="TasksSV" />
+          <ScalarProperty Name="TasksEV" ColumnName="TasksEV" />
+          <ScalarProperty Name="TasksIsMilestone" ColumnName="TasksIsMilestone" />
+          <ScalarProperty Name="TasksProjectID" ColumnName="TasksProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DTS">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.DTS)">
+        <MappingFragment StoreEntitySet="DTS">
+          <ScalarProperty Name="DTSID" ColumnName="DTSID" />
+          <ScalarProperty Name="DTSDate" ColumnName="DTSDate" />
+          <ScalarProperty Name="DTSTasksID" ColumnName="DTSTasksID" />
+          <ScalarProperty Name="DTSUserLoginID" ColumnName="DTSUserLoginID" />
+          <ScalarProperty Name="DTSActivityID" ColumnName="DTSActivityID" />
+          <ScalarProperty Name="DTSTimeFrom" ColumnName="DTSTimeFrom" />
+          <ScalarProperty Name="DTSTimeTill" ColumnName="DTSTimeTill" />
+          <ScalarProperty Name="DTSHours" ColumnName="DTSHours" />
+          <ScalarProperty Name="DTSStatus" ColumnName="DTSStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QCs">
+      <EntityTypeMapping TypeName="IsTypeOf(DBModel.QC)">
+        <MappingFragment StoreEntitySet="QCs">
+          <ScalarProperty Name="QCID" ColumnName="QCID" />
+          <ScalarProperty Name="QCDate" ColumnName="QCDate" />
+          <ScalarProperty Name="QCBugs" ColumnName="QCBugs" />
+          <ScalarProperty Name="QCProjectID" ColumnName="QCProjectID" />
+          <ScalarProperty Name="QCUserLoginID" ColumnName="QCUserLoginID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
