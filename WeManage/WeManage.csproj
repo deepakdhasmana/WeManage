@@ -123,6 +123,8 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Content\Images\BackGrounds\1%402x.jpg" />
+    <Content Include="Content\Images\BackGrounds\1.jpg" />
     <Content Include="Content\Images\Loading-1.png" />
     <Content Include="Content\Images\Loading-2.png" />
     <Content Include="Content\Images\loadingSmall.gif" />
@@ -136,6 +138,7 @@
     <Content Include="Content\morrisjs\morris.min.js" />
     <Content Include="Content\Service.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />

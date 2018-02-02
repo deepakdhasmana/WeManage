@@ -34,6 +34,7 @@ namespace WeManage.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 //Sending request to find web api REST service resource GetAllEmployees using HttpClient  
+
                 var Res = await client.GetAsync("api/UserLogins/AuthenticateUser?id=0&UserID=" + un + "&Password=" + Password);
 
                 //Checking the response is successful or not which is sent using HttpClient  

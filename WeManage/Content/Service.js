@@ -9,3 +9,15 @@
         return response;
     }
 });
+
+app.service('ProjectService', function ($http) {
+    this.getAll = function () {
+        debugger;
+        var response = $http({
+            method: "post",
+            url: "/Home/Index/1",
+            dataType: "json"
+        });
+        return response;
+    }
+});
