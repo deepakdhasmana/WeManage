@@ -4,18 +4,15 @@
 
 <html ng-app="myApp">
 <head>
-    <title></title>
-    
+    <title></title>    
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-
     <!-- Custom Fonts -->
-    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
     @*Error Modal*@
-    <div ng-controller="myCntrl">
+    <div ng-controller="LoginCntrl">
         <div id="alertModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -26,7 +23,7 @@
                     </div>
                     <!-- dialog buttons -->
                     <div class="modal-footer">
-                        <button type="button" ng-click="alertmsg()" class="btn btn-primary">OK</button>
+                        <button type="button" value = "Close" class="btn btn-primary" data-dismiss="modal">OK</button>
                     </div>
                 </div>
             </div>
@@ -34,7 +31,6 @@
 
         <!-- Top content -->
         <div class="top-content">
-
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
@@ -57,123 +53,24 @@
                                 </div>
                             </div>
                             <div class="form-bottom">
-                                <form role="form" action="" method="post" class="login-form">
+                                <form role="form" class="login-form">
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Username</label>
-                                        <input type="text" id="UserName" placeholder="UserName" ng-model="UserName" name="UserName" required autofocusplaceholder="Username..." class="form-username form-control">
+                                        <input type="text" id="UserName" ng-model="UserName" name="UserName" required autofocus placeholder="Username..." class="form-username form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Password</label>
-                                        <input type="password" class="form-password form-control" id="password" placeholder="Password" ng-model="password" name="Password" required autofocus>
+                                        <input type="password" class="form-password form-control" id="password" placeholder="Password" ng-model="password" name="Password">
                                     </div>
                                     <button class="btn" id="btnLogin" type="submit" ng-disabled="!(password && UserName)" ng-click="LoginCheck()">Sign in!</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 social-login">
-                            <h3>...or login with:</h3>
-                            <div class="social-login-buttons">
-                                <a class="btn btn-link-1 btn-link-1-facebook" href="#">
-                                    <i class="fa fa-facebook"></i> Facebook
-                                </a>
-                                <a class="btn btn-link-1 btn-link-1-twitter" href="#">
-                                    <i class="fa fa-twitter"></i> Twitter
-                                </a>
-                                <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
-                                    <i class="fa fa-google-plus"></i> Google Plus
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-
         </div>
     </div>
-
-    @*<div ng-controller="myCntrl">
-            <div id="alertModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <!-- dialog body -->
-                        <div class="modal-body">
-                            <button type="button" id="btn" value="Close" class="close" data-dismiss="modal">×</button>
-                            {{msg}}
-                        </div>
-                        <!-- dialog buttons -->
-                        <div class="modal-footer">
-                            <button type="button" ng-click="alertmsg()" class="btn btn-primary" data-dismiss="modal">OK</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="Absolute-Center is-Responsive">
-                        <div class="col-sm-12 col-md-10 col-md-offset-1">
-                            <div class="panel panel-success">
-                                <div class="panel-heading">Login</div>
-                                <div class="panel-body" style="box-shadow: -6px 2px 46px 7px #888888; padding: 20px;">
-                                    <form name="loginForm" novalidate>
-                                        <div class="form-horizontal">
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-md-3" style="text-align: right;">
-                                                        Username :
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="UserName" placeholder="UserName" ng-model="UserName" name="UserName" required autofocus />
-                                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-3" style="text-align: right;">
-                                                    Password :
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <input type="password" class="form-control" id="password" placeholder="Password" ng-model="password" name="Password" required autofocus />
-                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001; opacity: .8; filter: alpha(opacity=70); display: none">
-                                                                <p style="position: absolute; top: 30%; left: 45%; color: White;">
-                                                                    please wait...<img src="~/Content/images/Loading-1.png">
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-5" style="text-align: right;">
-                                                            <button id="btnLogin" type="submit" class="btn btn-success" ng-disabled="!(password && UserName)" ng-click="LoginCheck()">Login</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
