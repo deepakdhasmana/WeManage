@@ -7,7 +7,6 @@
         //$("#divLoading").show();
         var getData = myService.UserLogin(User);        
         getData.then(function (msg) {
-            alert(msg.data);
             if (msg.data == "0") {
                 //$("#divLoading").hide();
                 $("#alertModal").modal('show');

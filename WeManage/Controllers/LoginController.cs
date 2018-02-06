@@ -17,7 +17,7 @@ namespace WeManage.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public async System.Threading.Tasks.Task<string> Index(UserVerify data)
         {
