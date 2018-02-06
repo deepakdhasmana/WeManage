@@ -3,8 +3,7 @@
         var response = $http({
             method: "post",
             url: "/Login/Index",
-            data: JSON.stringify(User),
-            dataType: "json"
+            data: User
         });
         return response;
     }

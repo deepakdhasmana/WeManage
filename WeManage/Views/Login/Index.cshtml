@@ -4,18 +4,15 @@
 
 <html ng-app="myApp">
 <head>
-    <title></title>
-    
+    <title></title>    
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-
     <!-- Custom Fonts -->
-    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
     @*Error Modal*@
-    <div ng-controller="myCntrl">
+    <div ng-controller="LoginCntrl">
         <div id="alertModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -34,7 +31,6 @@
 
         <!-- Top content -->
         <div class="top-content">
-
             <div class="inner-bg">
                 <div class="container">
                     <div class="row">
@@ -64,7 +60,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-password">Password</label>
-                                        <input type="password" class="form-password form-control" id="password" placeholder="Password" ng-model="password" name="Password" required autofocus>
+                                        <input type="password" class="form-password form-control" id="password" placeholder="Password" ng-model="password" name="Password">
                                     </div>
                                     <button class="btn" id="btnLogin" type="submit" ng-click="LoginCheck()">Sign in!</button>
                                 </form>
@@ -73,7 +69,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
